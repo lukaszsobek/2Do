@@ -1,12 +1,12 @@
 // mark as done with css class
-$("li").on("click", function() {
+$("ul").on("click", "li", function() {
 	$(this).toggleClass("markedDone")
 })
 
 
 
 // remove item on click
-$("span").on("click", function(e) {
+$("ul").on("click", "span", function(e) {
 	$(this).parent().fadeOut(500, function() {
 		$(this).remove()
 	})
