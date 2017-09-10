@@ -1,10 +1,15 @@
-(function() {
+// mark as done with css class
+$("li").on("click", function() {
+	$(this).toggleClass("markedDone")
+})
 
-
-
-	$("li").on("click", function() {
-		$(this).css("text-decoration", "line-through")
+// remove item on click
+$("span").on("click", function(event) {
+	$(this).parent().fadeOut(500, function() {
+		$(this).remove()
 	})
+	event.stopPropagation()
+
+})
 
 
-})()
