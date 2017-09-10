@@ -1,0 +1,9 @@
+body {
+	font-size: 16px;
+}
+
+.container {
+	border: 1px solid #000;
+	max-width: 400px;
+	margin: 20px auto;
+}
