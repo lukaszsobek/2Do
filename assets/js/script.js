@@ -21,7 +21,7 @@ $("input[type='text']").on("keypress", function(e) {
 	if(e.which == 13) {
 		let textValue = $(this).val()
 		$(this).val("")
-		$("ul").append("<li>" + textValue + "<span><i class='fa fa-trash' aria-hidden='true'></i></span></li>")
+		$("ul").append("<li>" + textValue + "<span><i class='fa fa-trash-o' aria-hidden='true'></i></span></li>")
 
 	}
 })
