@@ -7,14 +7,37 @@ let toDoList = []
 // save item to local storage
 function saveItem(item) {
 
-	// we do need to get items already stored though
+	// get 
 	let itemList = localStorage.getItem(LocalKey)
 	itemList = itemList ? JSON.parse(itemList) : []
+
+	// add
 	itemList.push(item)
+
+	// save
 	itemList = JSON.stringify(itemList)
 	localStorage.setItem(LocalKey,itemList)
-	console.log(localStorage.getItem(LocalKey))
+	
+	//console.log(localStorage.getItem(LocalKey))
 
+}
+
+// delete an item
+function deleteItem(searchText) {
+
+	// get
+	let itemList = localStorage.getItem(LocalKey)
+	itemList = itemList ? JSON.parse(itemList) : []
+
+	// delete
+	let theKey = itemList.indexOf(searchText)
+	itemList.splice(theKey,1)
+
+	// save
+	itemList = JSON.stringify(itemList)
+	localStorage.setItem(LocalKey,itemList)
+
+	//console.log(localStorage.getItem(LocalKey))
 }
 
 
@@ -27,6 +50,8 @@ $("ul").on("click", "li", function() {
 // remove item on click
 $("ul").on("click", "span", function(e) {
 	$(this).parent().fadeOut(500, function() {
+
+		deleteItem($(this).text())
 		$(this).remove()
 	})
 	e.stopPropagation()
