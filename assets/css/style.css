@@ -1,3 +1,5 @@
+/* General */
+
 body {
 	font-size: 16px;
 	font-family: "Veranda", sans-serif;
@@ -15,6 +17,8 @@ body {
 	max-width: 400px;
 	margin: 200px auto;
 }
+
+/* Items in order of appearance */
 
 header {
 	border-radius: 10px 10px 0 0 ;

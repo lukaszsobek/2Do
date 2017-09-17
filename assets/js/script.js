@@ -21,5 +21,5 @@ $("input[type='text']").on("keypress", function(e) {
 		$(this).val("")
 		$("ul").append("<li>" + textValue + "<span><i class='fa fa-trash-o' aria-hidden='true'></i></span></li>")
 
-	}
+	} 
 })
