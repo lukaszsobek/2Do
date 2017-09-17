@@ -1,11 +1,25 @@
 "use strict"
 
 let LocalKey = "lukaszsobek_2Do_application"
-let toDoList = []
 
 
-// save item to local storage
+function loadLocalStore() {
+// populate list with items from local storage
+
+	// get
+	let itemList = localStorage.getItem(LocalKey)
+	itemList = itemList ? JSON.parse(itemList) : []
+
+	// append list
+	itemList.map(function(x) {
+		$("ul").append("<li>" + x + "<span><i class='fa fa-trash-o' aria-hidden='true'></i></span></li>")
+	})
+
+}
+
+
 function saveItem(item) {
+// save item to local storage
 
 	// get 
 	let itemList = localStorage.getItem(LocalKey)
@@ -18,12 +32,11 @@ function saveItem(item) {
 	itemList = JSON.stringify(itemList)
 	localStorage.setItem(LocalKey,itemList)
 	
-	//console.log(localStorage.getItem(LocalKey))
-
 }
 
-// delete an item
+
 function deleteItem(searchText) {
+// delete an item
 
 	// get
 	let itemList = localStorage.getItem(LocalKey)
@@ -50,7 +63,6 @@ $("ul").on("click", "li", function() {
 // remove item on click
 $("ul").on("click", "span", function(e) {
 	$(this).parent().fadeOut(500, function() {
-
 		deleteItem($(this).text())
 		$(this).remove()
 	})
@@ -69,3 +81,6 @@ $("input[type='search']").on("keypress", function(e) {
 
 	} 
 })
+
+
+$(document).ready(loadLocalStore)
