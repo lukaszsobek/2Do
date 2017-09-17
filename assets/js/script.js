@@ -3,12 +3,30 @@
 let LocalKey = "lukaszsobek_2Do_application"
 
 
+function getItems() {
+// returns all items from local storage or []
+
+	let itemList = localStorage.getItem(LocalKey)
+	itemList = itemList ? JSON.parse(itemList) : []
+
+	return itemList
+}
+
+
+function setItems(itemList) {
+// saves a list of items to the local storage
+
+	itemList = JSON.stringify(itemList)
+	localStorage.setItem(LocalKey,itemList)
+
+}
+
+
 function loadLocalStore() {
 // populate list with items from local storage
 
 	// get
-	let itemList = localStorage.getItem(LocalKey)
-	itemList = itemList ? JSON.parse(itemList) : []
+	let itemList = getItems()
 
 	// append list
 	itemList.map(function(x) {
@@ -21,16 +39,9 @@ function loadLocalStore() {
 function saveItem(item) {
 // save item to local storage
 
-	// get 
-	let itemList = localStorage.getItem(LocalKey)
-	itemList = itemList ? JSON.parse(itemList) : []
-
-	// add
+	let itemList = getItems()
 	itemList.push(item)
-
-	// save
-	itemList = JSON.stringify(itemList)
-	localStorage.setItem(LocalKey,itemList)
+	setItems(itemList)
 	
 }
 
@@ -38,19 +49,14 @@ function saveItem(item) {
 function deleteItem(searchText) {
 // delete an item
 
-	// get
-	let itemList = localStorage.getItem(LocalKey)
-	itemList = itemList ? JSON.parse(itemList) : []
+	let itemList = getItems()
 
 	// delete
 	let theKey = itemList.indexOf(searchText)
 	itemList.splice(theKey,1)
 
-	// save
-	itemList = JSON.stringify(itemList)
-	localStorage.setItem(LocalKey,itemList)
+	setItems(itemList)
 
-	//console.log(localStorage.getItem(LocalKey))
 }
 
 
