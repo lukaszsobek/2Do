@@ -4,7 +4,6 @@ $("ul").on("click", "li", function() {
 })
 
 
-
 // remove item on click
 $("ul").on("click", "span", function(e) {
 	$(this).parent().fadeOut(500, function() {
@@ -15,15 +14,12 @@ $("ul").on("click", "span", function(e) {
 })
 
 
-
 // add new item to the ul list 
 $("input[type='text']").on("keypress", function(e) {
-	if(e.which == 13) {
+	if(e.which == 13 && $(this).val() != "") {
 		let textValue = $(this).val()
 		$(this).val("")
 		$("ul").append("<li>" + textValue + "<span><i class='fa fa-trash-o' aria-hidden='true'></i></span></li>")
 
 	}
 })
-
-
